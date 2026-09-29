@@ -63,22 +63,31 @@ Decisiones técnicas:
 Los *service workers* y los módulos necesitan un servidor (no basta con abrir el archivo):
 
 ```bash
-npm run servir          # http://localhost:5173
+npm run servir          # http://127.0.0.1:4173 (servidor estático incluido, sin dependencias)
 # o bien
-python -m http.server 5173
+python -m http.server 4173
 ```
 
 ## Tests
 
 ```bash
 npm install
-npm test                # 49 tests con Vitest
-npm run cobertura       # exige 100 % de líneas en la lógica
+npm test                # 57 tests unitarios con Vitest
+npm run cobertura       # exige 100 % de líneas y funciones en la lógica, el almacén y el sonido
+npm run e2e             # 20 pruebas en Chromium (escritorio y móvil) con Playwright
+npm run lint            # ESLint
 npm run validar         # valida el HTML con html-validate
+npm run comprobar       # todo lo anterior
 ```
 
-La integración continua ejecuta los tests y la validación en cada *push* y, si
-todo pasa, publica la web en GitHub Pages.
+Las pruebas en navegador usan un reloj simulado para completar un pomodoro entero en milisegundos y
+comprueban: iniciar/pausar/seguir, atajos de teclado (y que no se disparan al escribir), paso al descanso y
+registro en estadísticas, ajustes que sobreviven a una recarga, un temporizador en marcha que continúa tras
+recargar, **funcionamiento sin conexión** con el *service worker* y **accesibilidad** con axe (WCAG 2.1 AA).
+Un test unitario verifica además que el *service worker* guarda en caché todos los archivos que usa la página.
+
+La integración continua ejecuta lint, tests, validación y pruebas en navegador en cada *push* y, si todo
+pasa, publica la web en GitHub Pages.
 
 ## Autor
 

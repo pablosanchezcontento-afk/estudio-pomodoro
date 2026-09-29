@@ -20,14 +20,34 @@ jobs:
           node-version: "24"
           cache: npm
       - run: npm ci
+      - name: Lint
+        run: npm run lint
       - name: Tests con cobertura
         run: npm run cobertura
       - name: Validar HTML
         run: npm run validar
 
+  e2e:
+    name: Pruebas en navegador (Playwright + axe)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run e2e
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report
+
   deploy:
     name: Publicar en GitHub Pages
-    needs: test
+    needs: [test, e2e]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:

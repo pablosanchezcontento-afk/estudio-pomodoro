@@ -10,11 +10,19 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "cobertura": "vitest run --coverage",
+    "e2e": "playwright test",
+    "lint": "eslint .",
     "validar": "html-validate index.html",
-    "servir": "npx --yes serve -l 5173 ."
+    "servir": "node e2e/servidor.mjs",
+    "comprobar": "npm run lint && npm run validar && npm run cobertura && npm run e2e"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
     "@vitest/coverage-v8": "^5.0.2",
+    "eslint": "^10.11.0",
+    "globals": "^17.12.0",
     "html-validate": "^11.16.1",
     "vitest": "^5.0.2"
   }
