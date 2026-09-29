@@ -2,7 +2,6 @@ name: CI y despliegue
 
 on:
   push:
-    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -48,7 +47,8 @@ jobs:
   deploy:
     name: Publicar en GitHub Pages
     needs: [test, e2e]
-    if: github.event_name != 'pull_request'
+    # Only main is published; other branches just run the checks.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       pages: write
