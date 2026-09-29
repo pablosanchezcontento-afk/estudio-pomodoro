@@ -1,0 +1,21 @@
+{
+  "name": "estudio-pomodoro",
+  "version": "1.0.0",
+  "description": "Temporizador Pomodoro para estudiar: PWA instalable, funciona sin conexión y guarda estadísticas.",
+  "type": "module",
+  "private": true,
+  "author": "Pablo Sánchez Contento",
+  "license": "MIT",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "cobertura": "vitest run --coverage",
+    "validar": "html-validate index.html",
+    "servir": "npx --yes serve -l 5173 ."
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.2",
+    "html-validate": "^11.16.1",
+    "vitest": "^5.0.2"
+  }
+}
