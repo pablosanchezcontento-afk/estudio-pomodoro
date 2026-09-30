@@ -1,8 +1,8 @@
 // Service worker: guarda la aplicación en caché para que funcione sin conexión.
-// Al cambiar cualquier archivo, sube la versión para que los usuarios reciban
-// la nueva copia.
+// VERSION es un hash del contenido de ARCHIVOS: lo calcula `npm run version-sw`
+// y un test falla si queda desactualizado, así que no hay que subirla a mano.
 
-const VERSION = "estudio-pomodoro-v1";
+const VERSION = "estudio-pomodoro-bc0e35d0477b";
 const ARCHIVOS = [
     "./",
     "index.html",

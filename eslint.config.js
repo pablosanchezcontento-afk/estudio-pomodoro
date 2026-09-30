@@ -13,7 +13,7 @@ export default [
         languageOptions: { globals: globals.serviceworker },
     },
     {
-        files: ["tests/**/*.js", "e2e/**/*.{js,mjs}", "*.config.js"],
+        files: ["tests/**/*.js", "e2e/**/*.{js,mjs}", "scripts/**/*.mjs", "*.config.js"],
         languageOptions: { globals: { ...globals.node, ...globals.browser } },
     },
     {

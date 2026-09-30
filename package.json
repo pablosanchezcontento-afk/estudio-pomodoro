@@ -14,6 +14,7 @@
     "lint": "eslint .",
     "validar": "html-validate index.html",
     "servir": "node e2e/servidor.mjs",
+    "version-sw": "node scripts/version-sw.mjs",
     "comprobar": "npm run lint && npm run validar && npm run cobertura && npm run e2e"
   },
   "devDependencies": {
